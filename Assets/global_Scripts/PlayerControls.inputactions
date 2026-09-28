@@ -174,7 +174,7 @@
                 {
                     "name": "",
                     "id": "4dd8824c-5397-4b5c-86f4-99e4a2f5c04f",
-                    "path": "<NimbusGamepadHid>/buttonWest",
+                    "path": "<Gamepad>/buttonWest",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -186,6 +186,17 @@
                     "name": "",
                     "id": "1577ad85-eac9-4201-a8d7-7d5f6b1d4a38",
                     "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Poop",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d95ca9b0-ccd4-4385-8c91-78e07015377d",
+                    "path": "<XInputController>/buttonWest",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
