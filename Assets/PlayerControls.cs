@@ -220,7 +220,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             ""id"": ""5ca68e18-9dba-4b47-95eb-5ace32d02cde"",
             ""actions"": [
                 {
-                    ""name"": ""Pooping"",
+                    ""name"": ""Poop"",
                     ""type"": ""Button"",
                     ""id"": ""82ede578-7025-4935-a0e5-b7f0f0713507"",
                     ""expectedControlType"": """",
@@ -264,7 +264,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Pooping"",
+                    ""action"": ""Poop"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -275,7 +275,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Pooping"",
+                    ""action"": ""Poop"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -438,7 +438,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_Movement_Move = m_Movement.FindAction("Move", throwIfNotFound: true);
         // Interactions
         m_Interactions = asset.FindActionMap("Interactions", throwIfNotFound: true);
-        m_Interactions_Pooping = m_Interactions.FindAction("Pooping", throwIfNotFound: true);
+        m_Interactions_Poop = m_Interactions.FindAction("Poop", throwIfNotFound: true);
         m_Interactions_NoseDive = m_Interactions.FindAction("NoseDive", throwIfNotFound: true);
         m_Interactions_Flap = m_Interactions.FindAction("Flap", throwIfNotFound: true);
         m_Interactions_Boost = m_Interactions.FindAction("Boost", throwIfNotFound: true);
@@ -623,7 +623,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     // Interactions
     private readonly InputActionMap m_Interactions;
     private List<IInteractionsActions> m_InteractionsActionsCallbackInterfaces = new List<IInteractionsActions>();
-    private readonly InputAction m_Interactions_Pooping;
+    private readonly InputAction m_Interactions_Poop;
     private readonly InputAction m_Interactions_NoseDive;
     private readonly InputAction m_Interactions_Flap;
     private readonly InputAction m_Interactions_Boost;
@@ -639,9 +639,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         /// </summary>
         public InteractionsActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         /// <summary>
-        /// Provides access to the underlying input action "Interactions/Pooping".
+        /// Provides access to the underlying input action "Interactions/Poop".
         /// </summary>
-        public InputAction @Pooping => m_Wrapper.m_Interactions_Pooping;
+        public InputAction @Poop => m_Wrapper.m_Interactions_Poop;
         /// <summary>
         /// Provides access to the underlying input action "Interactions/NoseDive".
         /// </summary>
@@ -680,9 +680,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_InteractionsActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_InteractionsActionsCallbackInterfaces.Add(instance);
-            @Pooping.started += instance.OnPooping;
-            @Pooping.performed += instance.OnPooping;
-            @Pooping.canceled += instance.OnPooping;
+            @Poop.started += instance.OnPoop;
+            @Poop.performed += instance.OnPoop;
+            @Poop.canceled += instance.OnPoop;
             @NoseDive.started += instance.OnNoseDive;
             @NoseDive.performed += instance.OnNoseDive;
             @NoseDive.canceled += instance.OnNoseDive;
@@ -703,9 +703,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         /// <seealso cref="InteractionsActions" />
         private void UnregisterCallbacks(IInteractionsActions instance)
         {
-            @Pooping.started -= instance.OnPooping;
-            @Pooping.performed -= instance.OnPooping;
-            @Pooping.canceled -= instance.OnPooping;
+            @Poop.started -= instance.OnPoop;
+            @Poop.performed -= instance.OnPoop;
+            @Poop.canceled -= instance.OnPoop;
             @NoseDive.started -= instance.OnNoseDive;
             @NoseDive.performed -= instance.OnNoseDive;
             @NoseDive.canceled -= instance.OnNoseDive;
@@ -867,12 +867,12 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     public interface IInteractionsActions
     {
         /// <summary>
-        /// Method invoked when associated input action "Pooping" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "Poop" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnPooping(InputAction.CallbackContext context);
+        void OnPoop(InputAction.CallbackContext context);
         /// <summary>
         /// Method invoked when associated input action "NoseDive" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>

@@ -134,7 +134,7 @@
             "id": "5ca68e18-9dba-4b47-95eb-5ace32d02cde",
             "actions": [
                 {
-                    "name": "Pooping",
+                    "name": "Poop",
                     "type": "Button",
                     "id": "82ede578-7025-4935-a0e5-b7f0f0713507",
                     "expectedControlType": "",
@@ -178,7 +178,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Pooping",
+                    "action": "Poop",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -189,7 +189,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Pooping",
+                    "action": "Poop",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
