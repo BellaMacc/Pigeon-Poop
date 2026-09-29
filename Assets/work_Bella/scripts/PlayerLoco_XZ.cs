@@ -32,9 +32,6 @@ namespace PlayerLocomotion
             movementInput = inputManager.ReadMovement();
             verticalInput = movementInput.y;
             horizontalInput = movementInput.x;
-
-            HandleMovement();
-            HandleRotation();
         }
 
 
@@ -70,7 +67,12 @@ namespace PlayerLocomotion
 
             player.transform.rotation = playerRotation;
         }
-        
+
+        private void FixedUpdate()
+        {
+            HandleMovement();
+            HandleRotation();
+        }
 
 
     }
