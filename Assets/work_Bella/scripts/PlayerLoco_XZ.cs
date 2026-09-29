@@ -9,17 +9,19 @@ namespace PlayerLocomotion
         [SerializeField] InputManager inputManager;
 
         //public variables
-        [SerializeField] float movementSpeed;
+        [SerializeField] float movementSpeed = 7;
+        [SerializeField] float rotationSpeed = 5;
         [SerializeField] Transform cameraObject;
         [SerializeField] Rigidbody player;
 
-        //global variables
+        // movement variables
         Vector3 moveDirection;
-        
-
+     
         Vector2 movementInput;
-        float verticalMovement;
-        float horizontalMovement;
+        float verticalInput;
+        float horizontalInput;
+
+        // direction variables
 
         private void Awake()
         {
@@ -28,10 +30,11 @@ namespace PlayerLocomotion
         public void OnMove()
         {
             movementInput = inputManager.ReadMovement();
-            verticalMovement = movementInput.y;
-            horizontalMovement = movementInput.x;
+            verticalInput = movementInput.y;
+            horizontalInput = movementInput.x;
 
             HandleMovement();
+            HandleRotation();
         }
 
 
@@ -39,8 +42,8 @@ namespace PlayerLocomotion
         {
 
             //forward value
-            moveDirection = cameraObject.forward * verticalMovement;
-            moveDirection += cameraObject.right * horizontalMovement;
+            moveDirection = cameraObject.forward * verticalInput;
+            moveDirection += cameraObject.right * horizontalInput;
             moveDirection.Normalize();
 
             moveDirection.y = 0; // this is subject to change when introducing flying
@@ -52,6 +55,21 @@ namespace PlayerLocomotion
             player.linearVelocity = moveDirection;
         }
 
+        private void HandleRotation()
+        {
+            Vector3 targetDirection = Vector3.zero;
+
+            targetDirection = cameraObject.forward * verticalInput;
+            targetDirection += cameraObject.right * horizontalInput;
+
+            targetDirection.Normalize();
+            targetDirection.y = 0;
+
+            Quaternion targetRotation = Quaternion.LookRotation(targetDirection, Vector3.up);
+            Quaternion playerRotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+
+            player.transform.rotation = playerRotation;
+        }
         
 
 
