@@ -59,8 +59,8 @@ namespace PlayerLocomotion
             targetDirection = cameraObject.forward * verticalInput;
             targetDirection += cameraObject.right * horizontalInput;
 
-            targetDirection.Normalize();
             targetDirection.y = 0;
+            targetDirection.Normalize();
 
             Quaternion targetRotation = Quaternion.LookRotation(targetDirection, Vector3.up);
             Quaternion playerRotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
