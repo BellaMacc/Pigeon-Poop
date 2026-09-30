@@ -474,10 +474,9 @@ MonoBehaviour:
   cameraTransform: {fileID: 374646265}
   cameraPivot: {fileID: 841116565}
   cameraFollowSpeed: 0.2
-  pitchLookSpeed: 0
-  yawLookSpeed: 0
-  clampPitch: {x: -35, y: 35}
-  clampYaw: {x: 100, y: -100}
+  pitchLookSpeed: 0.5
+  yawLookSpeed: 0.5
+  clampPitch: {x: -80, y: 35}
 --- !u!1 &579596105
 GameObject:
   m_ObjectHideFlags: 0
@@ -1441,6 +1440,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1052678151}
   - component: {fileID: 1052678152}
+  - component: {fileID: 1052678153}
   m_Layer: 0
   m_Name: CharacterActions
   m_TagString: Untagged
@@ -1480,6 +1480,24 @@ MonoBehaviour:
   rotationSpeed: 7
   cameraObject: {fileID: 683904678}
   player: {fileID: 1734953496}
+--- !u!114 &1052678153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1052678150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 716116f39d61e0a4587a6cbd1e106983, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerLocomotion.Flight
+  inputManager: {fileID: 1938903369}
+  player: {fileID: 1734953496}
+  suspensionTime: 4
+  flapBoost: 3
+  downwardAcceleration: 2
+  flightLaunchForce: 4
 --- !u!1 &1177537491
 GameObject:
   m_ObjectHideFlags: 0
@@ -2745,7 +2763,19 @@ MonoBehaviour:
       m_Calls: []
   OnFlap:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1052678153}
+        m_TargetAssemblyTypeName: PlayerLocomotion.Flight, Assembly-CSharp
+        m_MethodName: Flap
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnPoop:
     m_PersistentCalls:
       m_Calls: []
