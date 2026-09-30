@@ -21,7 +21,7 @@ public class CameraManager : MonoBehaviour
     [SerializeField] float yawLookSpeed;
 
     [SerializeField] Vector2 clampPitch;
-    [SerializeField] Vector2 clampYaw;
+    //[SerializeField] Vector2 clampYaw;
 
 
     public void FollowTarget()
@@ -34,7 +34,7 @@ public class CameraManager : MonoBehaviour
     public void RotateCamera()
     {
         lookYaw += (inputManager.ReadCameraMovement().x * yawLookSpeed);
-        lookYaw = Mathf.Clamp(lookYaw, clampYaw.x, clampYaw.y);
+       //lookYaw = Mathf.Clamp(lookYaw, clampYaw.x, clampYaw.y);
 
         lookPitch -= (inputManager.ReadCameraMovement().y * pitchLookSpeed);
         lookPitch = Mathf.Clamp(lookPitch, clampPitch.x, clampPitch.y);

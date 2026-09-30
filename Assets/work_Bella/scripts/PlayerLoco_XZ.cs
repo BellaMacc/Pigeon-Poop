@@ -37,19 +37,41 @@ namespace PlayerLocomotion
 
         private void HandleMovement()
         {
-
+            /*
             //forward value
             moveDirection = cameraObject.forward * verticalInput;
             moveDirection += cameraObject.right * horizontalInput;
             moveDirection.Normalize();
 
-            moveDirection.y = 0; // this is subject to change when introducing flying
+            //moveDirection.y = 0; // this is subject to change when introducing flying
 
             //adjusting speed based on float
             moveDirection *= movementSpeed;
 
             Vector3 movementVelocity = moveDirection;
-            player.linearVelocity = moveDirection;
+            player.linearVelocity = moveDirection;*/
+            //modify so that it only controls the xz plane of movement
+
+            Vector3 forward = cameraObject.forward;
+            Vector3 right = cameraObject.right;
+
+            // Keep horizontal movement on the XZ plane
+            forward.y = 0f;
+            right.y = 0f;
+
+            forward.Normalize();
+            right.Normalize();
+
+            moveDirection = forward * verticalInput;
+            moveDirection += right * horizontalInput;
+
+            // Prevent diagonal movement from being faster
+            moveDirection = Vector3.ClampMagnitude(moveDirection, 1f);
+
+            moveDirection *= movementSpeed;
+
+            // Only XZ movement
+            player.linearVelocity = new Vector3( moveDirection.x, player.linearVelocity.y,moveDirection.z);
         }
 
         private void HandleRotation()
